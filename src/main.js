@@ -1,10 +1,11 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import globalStore from './globalStore'
+import store from './store'
 
-// Normalize.css reset styles
-import 'normalize.css'
+// Import public stylesheets
+import '../public/normalize.css'
+import '../public/global.sass'
 
 // FontAwesome Library
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -13,7 +14,7 @@ import { faMagnifyingGlass, faBars, faX } from '@fortawesome/free-solid-svg-icon
 library.add( faMagnifyingGlass, faBars, faX )
 
 createApp(App)
-.provide('globalStore', globalStore)
 .component('font-awesome-icon', FontAwesomeIcon)
+.use(store)
 .use(router)
 .mount('#app')

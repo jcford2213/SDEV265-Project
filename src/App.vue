@@ -1,12 +1,15 @@
 <template>
   <header>
-    <navigation-bar/>
+    <header-bar/>
   </header>
   <router-view/>
+  
+  <footer>
+  </footer>
 </template>
 
 <script setup>
-import navigationBar from './components/navigationBar.vue';
+import headerBar from './components/headerBar.vue';
 </script>
 
 <style lang="sass">
