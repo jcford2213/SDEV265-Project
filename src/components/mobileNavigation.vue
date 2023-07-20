@@ -10,8 +10,8 @@
           {{ route.name }}
         </router-link>
       </li>
-      <li>
-        <p @click="logoutUser" v-if="userSignedIn">Log Out</p>
+      <li v-if="userSignedIn">
+        <p @click="logoutUser">Log Out</p>
       </li>
     </ul>
   </nav>
@@ -26,7 +26,7 @@ import { useRouter } from 'vue-router';
 const store = useStore()
 const routes = computed(() => store.state.navigationRoutes)
 const user = computed(() => store.state.currentUser)
-const userSignedIn = ref(user ? true : false)
+const userSignedIn = computed(() => user.value ? true : false)
 
 const router = useRouter()
 

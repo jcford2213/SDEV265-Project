@@ -1,5 +1,4 @@
 import { createStore } from "vuex"
-import axios from "axios"
 
 export default createStore({
   state() {
@@ -39,23 +38,6 @@ export default createStore({
     }
   },
   actions: {
-    getStockData({ commit }, tickerInput) {
-      // send ticker to server
-      axios.post('http://127.0.0.1:8000/stocks/', {
-        'ticker': tickerInput
-      })
-      .then( response => {
-        commit('setStock', response.data)
-      })
-      .catch ( error => {
-        // If error comes from server
-        if (error.response ?? false) {
-          console.log(`ServerError: ${error.response.data['error']}`)
-        }
-        console.log(error.message)
-        // emit ('error', error.response.data['error'])
-      })
-    },
     loginUser({ commit }, user) {
       console.log(`Logging in ${user}`)
       // TODO send login data to server
