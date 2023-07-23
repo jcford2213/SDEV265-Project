@@ -10,8 +10,8 @@ import '../public/global.sass'
 // FontAwesome Library
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faMagnifyingGlass, faBars, faX } from '@fortawesome/free-solid-svg-icons'
-library.add( faMagnifyingGlass, faBars, faX )
+import { faMagnifyingGlass, faBars, faX, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+library.add( faMagnifyingGlass, faBars, faX, faEllipsisVertical )
 
 createApp(App)
 .component('font-awesome-icon', FontAwesomeIcon)

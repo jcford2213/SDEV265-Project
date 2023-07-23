@@ -25,7 +25,7 @@ import { useRouter } from 'vue-router';
 // Get current state
 const store = useStore()
 const routes = computed(() => store.state.navigationRoutes)
-const user = computed(() => store.state.currentUser)
+const user = computed(() => store.state.user.username)
 const userSignedIn = computed(() => user.value ? true : false)
 
 const router = useRouter()

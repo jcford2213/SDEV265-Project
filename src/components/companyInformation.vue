@@ -1,5 +1,6 @@
 <template>
   <div id="stock-information-container">
+    <track-stock-button />
     <h1>
       <slot name="companyName"></slot>
       (<slot name="symbol"></slot>)
@@ -11,6 +12,7 @@
 </template>
 
 <script setup>
+import trackStockButton from './trackStockButton.vue';
 
 </script>
 

@@ -19,13 +19,16 @@
 </template>
 
 <script setup>
-import { watch, onBeforeMount, ref, reactive } from 'vue'
+import { watch, onBeforeMount, ref, reactive, provide } from 'vue'
 import { useRoute } from 'vue-router'
 import companyInformation from '../components/companyInformation.vue'
 import getStockData from '../utils/getStockData.js'
 
 // References the current route
 const route = useRoute()
+
+// Provide current ticker to trackStockButton
+provide('ticker', route.params.ticker)
 
 // Define stock properties
 const stockName = ref('')
