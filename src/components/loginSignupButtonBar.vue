@@ -40,7 +40,12 @@ onBeforeMount(() => {
   align-items: center
   column-gap: 3rem
   width: fit-content
+  
+.login-signup-buttons
+  color: white
 
 .login-signup-buttons.active
   border-block: 2px solid black
+
+
 </style>

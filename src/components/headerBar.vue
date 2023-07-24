@@ -39,4 +39,7 @@ onMounted( () => {
   padding-block: 1.5rem
   column-gap: 1rem
 
+  #logo
+    color: white
+
 </style>

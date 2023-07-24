@@ -41,7 +41,42 @@ const sendLoginToServer = () => {
     display: flex
     flex-direction: column
     row-gap: 1rem
+    max-width: 400px
+    margin: 0 auto
+    padding: 20px
+    border: 1px solid
+    border-radius: 5px
+
 
   #forgot-password
     align-self: end
+
+  
+  label 
+    display: block
+    font-weight: bold
+
+  input[type="text"],
+  input[type="password"] 
+    width: 100%
+    padding: 8px
+    font-size: 16px
+    border: 1px solid #ccc
+    border-radius: 3px
+
+  button
+    display: block
+    width: 100%
+    padding: 10px
+    font-size: 18px
+    font-weight: bold
+    color: #fff
+    background-color: #007bff
+    border: none
+    border-radius: 5px
+    cursor: pointer
+
+  button:hover 
+    background-color: #0056b3
+
 </style>
