@@ -1,7 +1,7 @@
 <template>
   <div class="login-signup-form-container">
     <login-signup-button-bar />
-    <form @submit.prevent="sendLoginToServer" id="login-form">
+    <form @submit.prevent="loginUser" id="login-form">
       <label for="username">Username</label>
       <input type="text" name="username" v-model="username">
       <label for="password">Password</label>
@@ -22,15 +22,15 @@ import { useStore } from 'vuex';
 
 import loginSignupButtonBar from '@/components/loginSignupButtonBar.vue';
 
-const store = useStore()
 
+const store = useStore()
 
 const username = ref('')
 const password = ref('')
 
-const sendLoginToServer = () => {
+const loginUser = () => {
   if (username.value && password.value) {
-    store.dispatch('loginUser', {'username': username.value, 'password': password.value})
+    store.dispatch('user/loginUser', {'username': username.value, 'password': password.value})
   }
 }
 
@@ -40,6 +40,7 @@ const sendLoginToServer = () => {
   #login-form
     display: flex
     flex-direction: column
+    align-items: center
     row-gap: 1rem
     max-width: 400px
     margin: 0 auto

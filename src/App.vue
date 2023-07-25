@@ -11,18 +11,25 @@
 </template>
 
 <script setup>
-  import headerBar from './components/headerBar.vue';
+import { onBeforeMount, ref } from 'vue';
+import { useStore } from 'vuex';
+import headerBar from './components/headerBar.vue';
+
+const store = useStore()
+
+const isDarkMode = ref(true) // Set this to true to enable dark mode
+
+onBeforeMount(() => {
+  // Check for jwt token in local storage
+  const token = sessionStorage.getItem('token')
+  if (!token) {
+    return
+  }
+  store.dispatch('user/getUser')
+})
+
 </script>
 
-<script>
-  export default {
-  data() {
-    return {
-      isDarkMode: true, // Set this to true to enable dark mode
-    };
-  },
-};
-</script>
 
 <style lang="sass">
 @import "./public/dark-mode.scss"

@@ -19,7 +19,7 @@
 
 <script setup>
 import { ref, watch, computed } from 'vue'
-import { useStore } from 'vuex'
+import { useStore, mapActions } from 'vuex'
 import { useRouter } from 'vue-router';
 
 // Get current state
@@ -27,6 +27,7 @@ const store = useStore()
 const routes = computed(() => store.state.navigationRoutes)
 const user = computed(() => store.state.user.username)
 const userSignedIn = computed(() => user.value ? true : false)
+const { logout } = mapActions('user', ['logout'])
 
 const router = useRouter()
 
@@ -43,7 +44,7 @@ const toggleDrawerState = () => {
 }
 
 const logoutUser = () => {
-  store.dispatch('logoutUser')
+  logout()
   toggleDrawerState()
   router.push('/')
 }

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <button id="track-stock-button" v-if="!isTickerTracked" @click="trackStock(ticker)">track stcok</button>
+    <button id="track-stock-button" v-if="!isTickerTracked" @click="trackStock(reactiveTicker)">track stock</button>
     <div id="tracking-stock-indicator" v-if="isTickerTracked">
       tracking
       <button @click="removeStock(ticker)">
-        <font-awesome-icon :icon="['fas', 'ellipse-vertical']"/>
+        <font-awesome-icon :icon="['fas', 'ellipsis-vertical']"/>
       </button>
     </div>
   </div>
@@ -18,27 +18,28 @@ import loginSignupPopup from './loginSignupPopup.vue';
 
 // Get state values
 const store = useStore()
-const trackedStocks = store.state.user.trackedStocks 
-
+const trackedStocks = store.state.user.trackedStocks
 // Get the current ticker and check if it is being tracked by user
 const ticker = inject('ticker')
+const reactiveTicker = ref(ticker)
+console.log(`${reactiveTicker.value}, ${trackedStocks}`)
 const isTickerTracked = computed(() => trackedStocks.includes(ticker))
 
 // Initial display state for loginSignupPopup
 const showPopup = ref(false)
 
 const trackStock = (tickerToAdd) => {
-  if(store.state.username) {
-    store.dispatch('addTrackedStock', tickerToAdd)
+  console.log(tickerToAdd)
+  if(store.state.user.user.username) {
+    store.dispatch('user/addTrackedStock', { tickerToAdd })
   }
   else {
     showPopup.value = true
   }
-  
 }
 
 const removeStock = (tickerToRemove) => {
-  store.dispatch('removeTrackedStock', tickerToRemove)
+  store.dispatch('user/deleteTrackedStock', { 'stock': tickerToRemove })
 }
 
 </script>

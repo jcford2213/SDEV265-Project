@@ -1,7 +1,7 @@
 <template>
   <div class="login-signup-form-container">
     <login-signup-button-bar />
-    <form @submit.prevent="sendSigninToServer" id="signup-form">
+    <form @submit.prevent="registerUser" id="signup-form">
       <label for="username">Username</label>
       <input type="text" name="username" v-model="username">
       <label for="email">Email</label>
@@ -18,17 +18,18 @@ import { ref } from 'vue';
 import { useStore } from 'vuex';
 
 import loginSignupButtonBar from '@/components/loginSignupButtonBar.vue';
+import store from '@/store';
 
-const store = useStore()
+store = useStore()
 
 const username = ref('')
 const email = ref('')
 const password = ref('')
 
 
-const sendSigninToServer = () => {
+const registerUser = () => {
   if (username.value && email.value && password.value) {
-    store.dispatch('signUpUser', {'username': username.value, 'email': email.value, 'password': password.value, 'tracked_stocks': ''})
+    store.dispatch('user/createUser', {'username': username.value, 'email': email.value, 'password': password.value})
   }
 }
 
