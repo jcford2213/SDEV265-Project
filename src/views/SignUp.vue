@@ -40,4 +40,9 @@ const registerUser = () => {
     display: flex
     flex-direction: column
     row-gap: 1rem
+    max-width: 400px
+    margin: 0 auto
+    padding: 20px
+    border: 1px solid
+    border-radius: 5px
 </style>

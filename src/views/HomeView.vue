@@ -2,21 +2,12 @@
   <div class="home-container">
     <div class="hero-section">
       <h1>Trading System Platform</h1>
-      <p>Invest in your future</p>
       <router-link to="/SignUp" class="cta-button">Get Started</router-link>
     </div>
     <div class="features-section">
       <div class="feature">
-        <!-- Replace 'feature-icon.png' with the icon for this feature -->
-        <img src="/path/to/feature-icon.png" alt="Feature Icon">
-        <h3>Feature 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-      <div class="feature">
-        <!-- Replace 'feature-icon.png' with the icon for this feature -->
-        <img src="/path/to/feature-icon.png" alt="Feature Icon">
-        <h3>Feature 2</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h3>Invest in Your Future</h3>
+        <p>Have accurate and easy to view stock information at your fingertips! Our stock analyzer provides information that you can use to help you make better financial decisions</p>
       </div>
       <!-- Add more features as needed -->
     </div>
