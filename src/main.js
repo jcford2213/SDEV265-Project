@@ -7,6 +7,10 @@ import store from './store'
 import '../public/normalize.css'
 import '../public/global.sass'
 
+// import bootstrap
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap'
+
 // FontAwesome Library
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'

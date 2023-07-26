@@ -9,28 +9,6 @@ const store = createStore({
   state() {
     return {
       currentStock: {},
-      navigationRoutes: [
-        {
-          name: 'Home',
-          path: '/'
-        },
-        {
-          name: 'Dashboard',
-          path: '/:user/dashboard'
-        },
-        {
-          name: 'Stocks',
-          path: '/stocks'
-        },
-        {
-          name: 'Login',
-          path: '/login'
-        },
-        {
-          name: 'Sign Up',
-          path: '/signup'
-        },
-      ]
     }
   },
   mutations: {

@@ -2,7 +2,7 @@
   <div class="home-container">
     <div class="hero-section">
       <h1>Trading System Platform</h1>
-      <router-link to="/SignUp" class="cta-button">Get Started</router-link>
+      <router-link to="/signup" class="cta-button">Get Started</router-link>
     </div>
     <div class="features-section">
       <div class="feature">

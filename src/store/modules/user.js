@@ -21,7 +21,9 @@ const userModule = {
 
     setToken(state, token) {
       state.token = token;
-      sessionStorage.setItem('token', token);
+      if (token != null) {
+        sessionStorage.setItem('token', token);
+      }
     },
 
     setTrackedStocks(state, trackedStocks){
@@ -87,9 +89,10 @@ const userModule = {
 
     async logoutUser({ commit }) {
       try {
-        await axios.post(`${API_URL}/user/logout/`);
+        sessionStorage.removeItem('token')
         commit('setUser', null);
         commit('setTrackedStocks', null)
+        commit('setToken', null)
       } catch (error) {
         throw error;
       }

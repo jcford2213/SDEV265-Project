@@ -16,11 +16,11 @@ const isLogin = ref(true)
 const isSignUp = ref(false)
 
 const flipActiveButtonState = path => {
-  if (path === '/login') {
+  if (path.toLowerCase() === '/login') {
     isLogin.value = true
     isSignUp.value = false
   }
-  if (path === '/signup') {
+  if (path.toLowerCase() === '/signup') {
     isLogin.value = false
     isSignUp.value = true
   }

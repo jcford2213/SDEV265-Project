@@ -1,6 +1,8 @@
 <template>
   <div id="header-bar" ref="header">
-    <div id="logo"><router-link to="/">TSP</router-link></div>
+    <div id="logo-container"><router-link to="/">
+      <img id=tsp-logo src="\images\Logo.png" alt="Logo for Stock Trading Platform">
+    </router-link></div>
     <stock-search-bar />
     <mobile-nav :headerHeight="headerHeight"/>
   </div>
@@ -39,7 +41,9 @@ onMounted( () => {
   padding-block: 1.5rem
   column-gap: 1rem
 
-  #logo
+  #logo-container
     color: white
 
+  #tsp-logo
+    max-width: 3rem
 </style>

@@ -1,17 +1,68 @@
 <template>
   <div id="mobile-nav">
-    <font-awesome-icon :icon="['fas', 'fa-bars']" v-if="!drawerOpen" @click="toggleDrawerState()"/>
-    <font-awesome-icon :icon="['fas', 'fa-x']" v-if="drawerOpen" @click="toggleDrawerState()"/>
+    <font-awesome-icon :icon="['fas', 'fa-bars']" v-if="!drawerOpen" @click="openCloseNavDrwer()"/>
+    <font-awesome-icon :icon="['fas', 'fa-x']" v-if="drawerOpen" @click="openCloseNavDrwer()"/>
   </div>
   <nav id="mobile-nav-drawer" :class="{ 'open': drawerOpen }">
     <ul id="mobile-nav-list">
-      <li v-for="route in routes">
-        <router-link :to="route.path" @click="toggleDrawerState()">
-          {{ route.name }}
-        </router-link>
+      <li>
+        <div class="btn btn-primary">
+          <router-link to="/" @click="openCloseNavDrwer()">
+            <span class="material-icons-sharp">
+                home
+            </span>
+            Home
+          </router-link>
+        </div>
+        
       </li>
-      <li v-if="userSignedIn">
-        <p @click="logoutUser">Log Out</p>
+      <li v-if="userLoggedIn">
+        <div class="btn btn-primary">
+          <router-link :to="{ name: 'Dashboard', params: {user: username} }" @click="openCloseNavDrwer()">
+            <span class="material-icons-sharp">
+                dashboard
+            </span>
+            Dashboard
+          </router-link>
+        </div>
+      </li>
+      <li>
+        <div class="btn btn-primary">
+          <router-link to="/stocks" @click="openCloseNavDrwer()">
+            <span class="material-icons-sharp">
+              trending_up
+            </span>
+            Stocks
+          </router-link>
+        </div>
+      </li>
+      <li v-if="!userLoggedIn">
+        <div class="btn btn-primary">
+          <router-link to="login" @click="openCloseNavDrwer()">
+            <span class="material-icons-sharp">
+              person_outline
+            </span>
+            Login
+          </router-link>
+        </div>
+      </li>
+      <li v-if="!userLoggedIn">
+        <div class="btn btn-primary">
+          <router-link to="signup" @click="openCloseNavDrwer()">
+            <span class="material-icons-sharp">
+              person_add
+            </span>
+            Sign Up
+          </router-link>
+        </div>
+      </li>
+      <li v-if="userLoggedIn">
+        <div class="btn btn-primary">
+          <span class="material-icons-sharp">
+              person_remove
+            </span>
+          <p @click="logoutUser">Log Out</p>
+        </div>
       </li>
     </ul>
   </nav>
@@ -19,36 +70,30 @@
 
 <script setup>
 import { ref, watch, computed } from 'vue'
-import { useStore, mapActions } from 'vuex'
+import { useStore } from 'vuex'
 import { useRouter } from 'vue-router';
 
 // Get current state
 const store = useStore()
-const routes = computed(() => store.state.navigationRoutes)
-const user = computed(() => store.state.user.username)
-const userSignedIn = computed(() => user.value ? true : false)
-const { logout } = mapActions('user', ['logout'])
+const username = computed(() => store.state.user.user.username)
+const userLoggedIn = computed(() => store.getters['user/isLoggedIn'])
 
 const router = useRouter()
 
-// Get headerHeight prop
-const props = defineProps(['headerHeight'])
-
-// Reactive height variable to take on props.headerHeight value
-const height = ref(0)
-
-// Drawer State and set DrawState
 let drawerOpen = ref(false);
-const toggleDrawerState = () => {
+const openCloseNavDrwer = () => {
   drawerOpen.value = !drawerOpen.value
 }
 
 const logoutUser = () => {
-  logout()
-  toggleDrawerState()
+  store.dispatch('user/logoutUser')
+  openCloseNavDrwer()
   router.push('/')
 }
 
+// Get headerHeight prop so drawer knows how far to drop down
+const props = defineProps(['headerHeight'])
+const height = ref(0)
 watch(
   // Set css property when new height is detected
   () => props.headerHeight, (newHeight) => {
@@ -56,6 +101,7 @@ watch(
     document.documentElement.style.setProperty('--header-height', `${height.value}px`)
   }
 )
+
 </script>
 
 <style lang="sass">
