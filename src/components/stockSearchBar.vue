@@ -22,18 +22,24 @@ const routeToStockPage = (tickerInput) => {
 
 </script>
 
-<style lang="sass">
-#search-field-container
-  display: flex
-  flex-direction: row
-  column-gap: 0.5rem
-  border: 1px solid
-  border-radius: 10px
-  padding-inline: 1rem
-  padding-block: 0.5rem
-  min-width: 8rem
+<style>
+#search-field-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: center;
+  column-gap: 0.5rem;
+  border: 1px solid;
+  border-radius: 10px;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  max-width: 25rem;
+  min-width: 2rem;
+}
+#stock-search-field {
+  border: none;
+  background: none;
+}
 
-#stock-search-field
-  border: none
-  min-width: 6rem
+
 </style>

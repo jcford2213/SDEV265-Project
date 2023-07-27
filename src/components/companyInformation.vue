@@ -16,6 +16,6 @@ import trackStockButton from './trackStockButton.vue';
 
 </script>
 
-<style lang="sass">
+<style>
 
 </style>

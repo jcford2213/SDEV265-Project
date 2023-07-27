@@ -1,121 +1,29 @@
 <template>
-  <div class="home-container">
-    <div class="hero-section">
-      <h1>Trading System Platform</h1>
-      <router-link to="/signup" class="cta-button">Get Started</router-link>
-    </div>
-    <div class="features-section">
-      <div class="feature">
-        <h3>Invest in Your Future</h3>
-        <p>Have accurate and easy to view stock information at your fingertips! Our stock analyzer provides information that you can use to help you make better financial decisions</p>
+  <main>            <!-- Main Page -->
+      <div class="introduction">
+        <div class="sent">
+          <div class="status">
+            <div class="info">
+              <div class="logo">
+                <img src="images/Logo.png">
+              </div>
+
+                <h2><i>Start Investing For Your Tomorrow, Today</i></h2>
+                           
+                <h3>Have accurate and easy to view stock information at your fingertips! Our stock analyzer provides information that you can use to assist you make better financial decisions for your future. Make sure to signup today so you can keep up with the latest trending stocks!</h3>
+
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- Add more features as needed -->
-    </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
-import stockSearchBar from '@/components/stockSearchBar.vue';
+  import stockSearchBar from '@/components/stockSearchBar.vue';
+  import sideBar from '@/components/sideBar.vue';
 </script>
 
-<style lang="scss">
-.home-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  background-color: #333;
-  color: #fff;
+<style>
 
-  .hero-section {
-    text-align: center;
-    margin-bottom: 60px;
-
-    h1 {
-      font-size: 48px;
-      font-weight: bold;
-      color: #ffffff;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 20px;
-      color: #ccc;
-      margin-bottom: 40px;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 12px 30px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #fff;
-      background-color: #007bff;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
-  }
-
-  .features-section {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-
-    .feature {
-      max-width: 300px;
-      text-align: center;
-      margin-bottom: 30px;
-      padding: 20px;
-      border: 1px solid #666;
-      border-radius: 5px;
-      background-color: #444;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s ease;
-
-      &:hover {
-        transform: translateY(-5px);
-      }
-
-      img {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 20px;
-      }
-
-      h3 {
-        font-size: 24px;
-        color: #007bff;
-        margin-bottom: 10px;
-      }
-
-      p {
-        font-size: 16px;
-        color: #ccc;
-      }
-    }
-  }
-
-  /* Media query for responsiveness */
-  @media (max-width: 600px) {
-    .hero-section {
-      h1 {
-        font-size: 36px;
-      }
-
-      p {
-        font-size: 18px;
-      }
-
-      .cta-button {
-        font-size: 18px;
-      }
-    }
-  }
-}
 </style>
