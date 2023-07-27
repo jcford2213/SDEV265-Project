@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div id="track-button-container">
     <button id="track-stock-button" v-if="!isTickerTracked" @click="trackStock(reactiveTicker)">track stock</button>
     <div id="tracking-stock-indicator" v-if="isTickerTracked">
       tracking
-      <button @click="removeStock(ticker)">
+      <button id="ellipsis" @click="removeStock(ticker)">
         <font-awesome-icon :icon="['fas', 'ellipsis-vertical']"/>
       </button>
     </div>
@@ -30,7 +30,7 @@ const showPopup = ref(false)
 
 const trackStock = (tickerToAdd) => {
   console.log(tickerToAdd)
-  if(store.state.user.user.username) {
+  if(store.state.user.user?.username) {
     store.dispatch('user/addTrackedStock', { tickerToAdd })
   }
   else {
@@ -45,5 +45,18 @@ const removeStock = (tickerToRemove) => {
 </script>
 
 <style lang="sass">
-  
+  #track-button-container 
+    width: 6.5rem
+
+  #track-stock-button
+    background-color: var(--color-warning)
+    width: 100%
+    padding-block: 0.5rem
+    border-radius: 5px
+
+  #tracking-stock-indicator
+    background-color: var(--color-success)
+    border-radius: 5px
+
+  #ellipisis
 </style>

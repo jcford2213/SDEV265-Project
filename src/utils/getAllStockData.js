@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ErrorCodes } from 'vue'
 
 const getAllStockData = async (tickerInput) => {
   // send ticker to server
@@ -10,12 +11,11 @@ const getAllStockData = async (tickerInput) => {
   })
   .catch ( error => {
     // If error comes from server
-    if (error.response ?? false) {
-      // TODO add better error handling. App breaks if error is sent through
-      console.log(`ServerError: ${error.response.data['error']}`)
+    if (error.response?.status) {
+      throw new Error(`${tickerInput} is not a valid stock symbol. Try searching for another stock.`)
     }
-    console.log(error.message)
-    // emit ('error', error.response.data['error'])
+    // Else throw this error
+    throw new Error('Problems connecting with server. Try again later.')
   })
   return stock
 }

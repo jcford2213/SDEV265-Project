@@ -1,7 +1,7 @@
 <template>
   <div id="search-field-container">
     <font-awesome-icon :icon="['fas', 'magnifying-glass']" />
-    <input type="text" id="stock-search-field" placeholder="Stock Symbol..." ref="stockSymbol" @keyup.enter="routeToStockPage(stockSymbol.value)">
+    <input type="text" maxlength="8" id="stock-search-field" placeholder="Stock Symbol..." ref="stockSymbol" @keyup.enter="routeToStockPage(stockSymbol.value)">
   </div>
 </template>
 
@@ -22,19 +22,25 @@ const routeToStockPage = (tickerInput) => {
 
 </script>
 
-<style lang="sass">
-#search-field-container
-  display: flex
-  flex-direction: row
-  align-items: center
-  column-gap: 0.5rem
-  border: 1px solid
-  border-radius: 10px
-  padding-inline: 1rem
-  padding-block: 0.5rem
-  min-width: 8rem
+<style>
+#search-field-container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: center;
+  column-gap: 0.5rem;
+  border: 1px solid;
+  border-radius: 10px;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  max-width: 25rem;
+  min-width: 2rem;
+}
+#stock-search-field {
+  border: none;
+  background: none;
+  min-width: 2rem;
+}
 
-#stock-search-field
-  border: none
-  min-width: 6rem
+
 </style>

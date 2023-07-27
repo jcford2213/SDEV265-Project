@@ -35,6 +35,11 @@ const routes = [
     path: '/forgot-password',
     name: 'Forgot Password',
     component: () => import ('../views/ForgotPassword.vue')
+  },
+  // 404
+  {
+    path: '/:pathMatch(.*)*',
+    component: () =>  import('../views/404.vue')
   }
 ]
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="stock-data-container" v-if="!isError">
     <track-stock-button :ticker="currentTicker"/>
     <h1>
       {{ stockName }}
@@ -15,6 +15,9 @@
     </div>
     <p>{{ stockAboutCompany }}</p>
   </div>
+  <h1 id="error-message" v-if="isError">
+    {{ errorMessage }}
+  </h1>
 </template>
 
 <script setup>
@@ -35,15 +38,24 @@ const stockAboutCompany = ref('')
 const stockWeeklyModel = ref({})
 const stockMonthlyModel = ref({})
 
+// Define error message variable and state boolean
+const errorMessage = ref('')
+const isError = ref(false);
 
 const mountStockValues = async (route) => {
-  const stock = await getAllStockData(route)
-  stockName.value = stock.stockData.shortName
-  stockSymbol.value = stock.stockData.symbol
-  stockCurrentPrice.value = stock.stockData.currentPrice
-  stockAboutCompany.value = stock.stockData.longBusinessSummary
-  stockWeeklyModel.value = reactive(stock.weeklyModel)
-  stockMonthlyModel.value = reactive(stock.monthlyModel)
+  try {
+    const stock = await getAllStockData(route)
+    stockName.value = stock.stockData.shortName
+    stockSymbol.value = stock.stockData.symbol
+    stockCurrentPrice.value = stock.stockData.currentPrice
+    stockAboutCompany.value = stock.stockData.longBusinessSummary
+    stockWeeklyModel.value = reactive(stock.weeklyModel)
+    stockMonthlyModel.value = reactive(stock.monthlyModel)
+    }
+  catch (err) {
+    errorMessage.value = err.message
+    isError.value = !isError.value
+  }
 }
 
 onBeforeMount(() => {
