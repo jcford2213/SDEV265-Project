@@ -18,6 +18,9 @@
 
 <style>
 #tsp-home-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   width: 200px
 }
 </style>
