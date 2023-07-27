@@ -33,4 +33,7 @@ onBeforeMount(() => {
 
 <style lang="sass">
 @import "./public/dark-mode.scss"
+
+#app
+  margin-inline: 1rem
 </style>

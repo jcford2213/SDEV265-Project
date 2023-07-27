@@ -3,13 +3,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-// Import public stylesheets
-import '../public/normalize.css'
-import '../public/global.sass'
-
 // import bootstrap
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap'
+
+// Import public stylesheets
+import '../public/normalize.css'
+import '../public/global.sass'
 
 // FontAwesome Library
 import { library } from '@fortawesome/fontawesome-svg-core'

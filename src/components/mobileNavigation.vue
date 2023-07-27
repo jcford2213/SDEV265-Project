@@ -6,8 +6,8 @@
   <nav id="mobile-nav-drawer" :class="{ 'open': drawerOpen }">
     <ul id="mobile-nav-list">
       <li>
-        <div class="btn btn-primary">
-          <router-link to="/" @click="openCloseNavDrwer()">
+        <div  class="btn btn-primary">
+          <router-link class=" icon-nav-button" to="/" @click="openCloseNavDrwer()">
             <span class="material-icons-sharp">
                 home
             </span>
@@ -18,7 +18,7 @@
       </li>
       <li v-if="userLoggedIn">
         <div class="btn btn-primary">
-          <router-link :to="{ name: 'Dashboard', params: {user: username} }" @click="openCloseNavDrwer()">
+          <router-link class=" icon-nav-button" :to="{ name: 'Dashboard', params: {user: username} }" @click="openCloseNavDrwer()">
             <span class="material-icons-sharp">
                 dashboard
             </span>
@@ -28,7 +28,7 @@
       </li>
       <li>
         <div class="btn btn-primary">
-          <router-link to="/stocks" @click="openCloseNavDrwer()">
+          <router-link class=" icon-nav-button" to="/stocks" @click="openCloseNavDrwer()">
             <span class="material-icons-sharp">
               trending_up
             </span>
@@ -38,7 +38,7 @@
       </li>
       <li v-if="!userLoggedIn">
         <div class="btn btn-primary">
-          <router-link to="login" @click="openCloseNavDrwer()">
+          <router-link class=" icon-nav-button" to="login" @click="openCloseNavDrwer()">
             <span class="material-icons-sharp">
               person_outline
             </span>
@@ -48,7 +48,7 @@
       </li>
       <li v-if="!userLoggedIn">
         <div class="btn btn-primary">
-          <router-link to="signup" @click="openCloseNavDrwer()">
+          <router-link class=" icon-nav-button" to="signup" @click="openCloseNavDrwer()">
             <span class="material-icons-sharp">
               person_add
             </span>
@@ -57,11 +57,13 @@
         </div>
       </li>
       <li v-if="userLoggedIn">
-        <div class="btn btn-primary">
-          <span class="material-icons-sharp">
+        <div class="btn btn-primary" @click="logoutUser">
+          <div class="icon-nav-button">
+            <span class="material-icons-sharp">
               person_remove
             </span>
-          <p @click="logoutUser">Log Out</p>
+            Log Out
+          </div>
         </div>
       </li>
     </ul>
@@ -126,4 +128,12 @@ watch(
     width: fit-content
     padding-block: 1rem
     padding-inline-start: 3rem
+
+  .icon-nav-button
+    display: flex
+    flex-direction: row
+    column-gap: 0.5rem
+    justify-content: center
+    align-items: center
+    
 </style>

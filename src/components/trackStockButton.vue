@@ -13,16 +13,16 @@
 
 <script setup>
 import { useStore } from 'vuex';
-import { ref, computed, inject } from 'vue';
+import { ref, computed } from 'vue';
 import loginSignupPopup from './loginSignupPopup.vue';
 
 // Get state values
 const store = useStore()
 const trackedStocks = store.state.user.trackedStocks
 // Get the current ticker and check if it is being tracked by user
-const ticker = inject('ticker')
-const reactiveTicker = ref(ticker)
-console.log(`${reactiveTicker.value}, ${trackedStocks}`)
+const props = defineProps('ticker')
+const ticker = ref(props.ticker)
+console.log(`${trackedStocks}, ${ticker.value}`)
 const isTickerTracked = computed(() => trackedStocks.includes(ticker))
 
 // Initial display state for loginSignupPopup

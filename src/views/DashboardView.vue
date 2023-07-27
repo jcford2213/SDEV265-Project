@@ -3,17 +3,18 @@
     <h1>
       {{ username }} Dashboard
     </h1>
-    <div>
-      <h2 v-if="trackedStocks.length > 0">{{ trackedStocks }}</h2>
-      <h2 v-else>You are not currently tracking any stocks</h2>
+    <div v-if="trackedStocks.length > 0" v-for="stock in trackedStocks" class="card">
+      <stockCard :ticker="stock" class="card-body"/>
     </div>
+    <h2 v-else>You are not currently tracking any stocks</h2>
   </div>
 </template>
 
 <script setup>
-import { onBeforeMount, ref, computed } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
+import stockCard from '@/components/stockCard.vue';
 
 const store = useStore()
 const trackedStocks = ref(store.state.user.trackedStocks)

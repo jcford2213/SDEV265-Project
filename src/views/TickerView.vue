@@ -1,16 +1,15 @@
 <template>
   <div class="home">
-    <company-information>
-      <template v-slot:companyName>
-        {{ stockName }}
-      </template>
-      <template v-slot:symbol>
-        {{ stockSymbol }}
-      </template>
-      <template v-slot:currentPrice>
-        {{ stockCurrentPrice }}
-      </template>
-    </company-information>
+    <track-stock-button :ticker="currentTicker"/>
+    <h1>
+      {{ stockName }}
+    </h1>
+    <h1>
+      {{ stockSymbol }}
+    </h1> 
+    <h2>
+      {{ stockCurrentPrice }}
+    </h2>
     <div id="model-image-container">
       <img id="time-series-model" :src="`data:image/jpeg;base64, ${stockWeeklyModel.ar}`" alt="Model of Stock Time Series Analysis">
     </div>
@@ -19,16 +18,14 @@
 </template>
 
 <script setup>
-import { watch, onBeforeMount, ref, reactive, provide } from 'vue'
+import { watch, onBeforeMount, ref, reactive } from 'vue'
 import { useRoute } from 'vue-router'
-import companyInformation from '../components/companyInformation.vue'
-import getStockData from '../utils/getStockData.js'
+import getAllStockData from '../utils/getAllStockData.js'
+import trackStockButton from '@/components/trackStockButton.vue';
 
 // References the current route
 const route = useRoute()
-
-// Provide current ticker to trackStockButton
-provide('ticker', route.params.ticker)
+const currentTicker = ref(route.params.ticker)
 
 // Define stock properties
 const stockName = ref('')
@@ -38,8 +35,9 @@ const stockAboutCompany = ref('')
 const stockWeeklyModel = ref({})
 const stockMonthlyModel = ref({})
 
+
 const mountStockValues = async (route) => {
-  const stock = await getStockData(route)
+  const stock = await getAllStockData(route)
   stockName.value = stock.stockData.shortName
   stockSymbol.value = stock.stockData.symbol
   stockCurrentPrice.value = stock.stockData.currentPrice
@@ -50,12 +48,12 @@ const mountStockValues = async (route) => {
 
 onBeforeMount(() => {
   // Call server with current route ticker url variable stocks/:ticker
-  mountStockValues(route.params.ticker)
+  mountStockValues(currentTicker.value)
 })
 
 // When route changes, update currentStock state
 watch(
-  () => route.params.ticker,
+  () => currentTicker.value,
   (newTicker) => {
     mountStockValues(newTicker)
   }

@@ -26,6 +26,7 @@ const routeToStockPage = (tickerInput) => {
 #search-field-container
   display: flex
   flex-direction: row
+  align-items: center
   column-gap: 0.5rem
   border: 1px solid
   border-radius: 10px

@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const getStockData = async (tickerInput) => {
+const getBasicStockData = async (tickerInput) => {
   // send ticker to server
-  const stock = await axios.post(`${process.env.VUE_APP_SERVER_URL}/stocks/`, {
+  const stock = await axios.post(`${process.env.VUE_APP_SERVER_URL}/stocks/get-all`, {
     'ticker': tickerInput
   })
   .then( response => {
@@ -20,4 +20,4 @@ const getStockData = async (tickerInput) => {
   return stock
 }
 
-export default getStockData
+export default getBasicStockData
