@@ -1,6 +1,9 @@
 # frontend
 
 ## Project setup
+
+### Make sure Node.js is installed on your local machine
+
 ```
 npm install
 ```
