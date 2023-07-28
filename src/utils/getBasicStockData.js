@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const getBasicStockData = async (tickerInput) => {
   // send ticker to server
-  const stock = await axios.post(`${process.env.VUE_APP_SERVER_URL}/stocks/get-all`, {
+  const stock = await axios.post(`${process.env.VUE_APP_SERVER_URL}/stocks/get-basic`, {
     'ticker': tickerInput
   })
   .then( response => {

@@ -69,7 +69,7 @@
 </template>
 
 <script setup>
-import { onBeforeMount, computed } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import headerBar from './components/headerBar.vue';
@@ -84,17 +84,7 @@ const router = useRouter()
 const userLoggedIn = computed(() => store.getters['user/isLoggedIn'])
 const username = computed(() => store.state.user.user.username)
 
-//const isDarkMode = ref(true) // Set this to true to enable dark mode
 
-
-onBeforeMount(() => {
-  // Check for jwt token in local storage
-  const token = sessionStorage.getItem('token')
-  if (!token) {
-    return
-  }
-  store.dispatch('user/getUser')
-})
 
 const logoutUser = () => {
   store.dispatch('user/logoutUser')

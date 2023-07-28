@@ -33,10 +33,9 @@ const userModule = {
         return
       }
       const stocksList = trackedStocks.split(',')
-      if (stocksList[0] == '') {
-        state.trackedStocks = []
-        return
-      }
+        if (stocksList[0] == '') {
+          stocksList.splice(0, 1)
+        }
       state.trackedStocks = stocksList
     }
   },
@@ -102,6 +101,7 @@ const userModule = {
       try {
         const response = await axios.get(`${API_URL}/user/get-tracked-stocks/`, { headers: { Authorization: `Bearer ${state.token}` } });
         const trackedStocks = response.data;
+        console.log(trackedStocks)
         commit('setTrackedStocks', trackedStocks.tracked_stocks);
       } catch (error) {
         throw error;
@@ -122,7 +122,7 @@ const userModule = {
 
     async deleteTrackedStock({ commit, state }, trackedStock) {
       try {
-        const response = await axios.put(`${API_URL}/user/untrack-stock/`, { tracked_stock: trackedStock }, {
+        const response = await axios.put(`${API_URL}/user/untrack-stock/`, trackedStock, {
           headers: { Authorization: `Bearer ${state.token}` }
         });
         const trackedStocks = response.data;

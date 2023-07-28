@@ -14,14 +14,6 @@
     </div>
     <div id="right-header">
       <stock-search-bar />
-      <div class="dark-mode">
-          <span class="material-icons-sharp active">
-              light_mode
-          </span>
-          <span class="material-icons-sharp">
-              dark_mode
-          </span>
-      </div>
     </div>
   </div>
 </template>
@@ -37,16 +29,6 @@ const navOpen = ref(false)
 const openCloseNav = () => {
   navOpen.value = !navOpen.value
 }
-
-import { useDark, useToggle } from "@vueuse/core";
-
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
-
-
-
-
-
 </script>
 
 <style>

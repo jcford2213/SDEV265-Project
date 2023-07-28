@@ -44,6 +44,7 @@ const closePopup = () => {
     align-items: center
     padding: 1rem
     width: 60%
+    z-index: 99999
 
   
   .popup-nav-button

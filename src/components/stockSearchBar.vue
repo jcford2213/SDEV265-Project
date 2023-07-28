@@ -13,7 +13,6 @@ const router = useRouter()
 const stockSymbol = ref(null)
 
 const routeToStockPage = (tickerInput) => {
-  console.log(tickerInput)
   router.push(`/stocks/${tickerInput}`)
   // Reset search field
   document.getElementById('stock-search-field').value = ''

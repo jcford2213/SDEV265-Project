@@ -21,14 +21,14 @@
 </template>
 
 <script setup>
-import { watch, onBeforeMount, ref, reactive } from 'vue'
+import { watch, onBeforeMount, ref, reactive, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import getAllStockData from '../utils/getAllStockData.js'
 import trackStockButton from '@/components/trackStockButton.vue';
 
 // References the current route
 const route = useRoute()
-const currentTicker = ref(route.params.ticker)
+const currentTicker = computed(() => route.params.ticker)
 
 // Define stock properties
 const stockName = ref('')
@@ -51,6 +51,7 @@ const mountStockValues = async (route) => {
     stockAboutCompany.value = stock.stockData.longBusinessSummary
     stockWeeklyModel.value = reactive(stock.weeklyModel)
     stockMonthlyModel.value = reactive(stock.monthlyModel)
+    isError.value = false
     }
   catch (err) {
     errorMessage.value = err.message
@@ -67,6 +68,7 @@ onBeforeMount(() => {
 watch(
   () => currentTicker.value,
   (newTicker) => {
+    console.log(newTicker)
     mountStockValues(newTicker)
   }
 )

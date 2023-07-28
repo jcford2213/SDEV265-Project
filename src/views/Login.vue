@@ -2,7 +2,7 @@
   <div id="login-form-container" class="card">
     <h1>Login</h1>
     <form @submit.prevent="loginUser" id="login-form">
-      <p v-if="loginError">
+      <p id="login-error" v-if="loginError">
         Incorrect username or password
       </p>
       <label for="username">Username</label>
@@ -107,6 +107,10 @@ watch(
 
     button:hover 
       background-color: #0056b3
+
+  #login-error
+    color: var(--color-danger)
+    font-size: 1.5rem
 
 @media screen and (min-width: 600px)
   #login-form-container
